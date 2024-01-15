@@ -1,0 +1,54 @@
+{
+  "name": "diagram-js-accordion-palette",
+  "version": "1.0.0",
+  "description": ".",
+  "main": "dist/diagram-js-accordion-palette.cjs",
+  "module": "dist/diagram-js-accordion-palette.es.js",
+  "umd:main": "dist/diagram-js-accordion-palette.umd.js",
+  "types": "dist/src/index",
+  "files": [
+    "dist",
+    "assets",
+    "screenshot",
+    "src"
+  ],
+  "keywords": [
+    "palette",
+    "diagram-js",
+    "bpmn-js",
+    "diagram-js-palette",
+    "diagram-js-accordion-palette"
+  ],
+  "scripts": {
+    "build": "rollup --config"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miyuesc/diagram-js-accordion-palette.git"
+  },
+  "author": "MiyueSC",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/miyuesc/diagram-js-accordion-palette/issues"
+  },
+  "homepage": "https://github.com/miyuesc/diagram-js-accordion-palette#readme",
+  "dependencies": {
+    "min-dash": "^4.1.1",
+    "min-dom": "^4.1.0"
+  },
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.22.5",
+    "@rollup/plugin-commonjs": "^25.0.1",
+    "@rollup/plugin-node-resolve": "^15.1.0",
+    "diagram-js": "^12.2.0",
+    "rollup": "^2.79.1",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-typescript2": "^0.34.1",
+    "typescript": "^5.1.3"
+  },
+  "peerDependencies": {
+    "diagram-js": "^12.2.0",
+    "min-dash": "^4.1.1",
+    "min-dom": "^4.1.0"
+  }
+}

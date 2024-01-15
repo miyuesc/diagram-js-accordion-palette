@@ -1,0 +1,95 @@
+.djs-accordion-palette.open {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+
+  width: 200px;
+  max-height: calc(100% - 40px);
+  overflow-y: auto;
+
+  border-radius: 4px;
+  padding: 4px 8px;
+  box-sizing: border-box;
+  box-shadow: 0 0 10px var(--color-black-opacity-10);
+  background-color: var(--color-white);
+}
+
+.djs-accordion-group summary {
+  width: 100%;
+  line-height: 32px;
+  font-weight: 700;
+  background-color: var(--color-grey-225-10-97);
+  box-sizing: border-box;
+  padding: 0 8px;
+  margin-bottom: 2px;
+  word-break: break-word;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.djs-accordion-palette .djs-palette-group {
+  max-height: 0;
+  transition: all 0.25s ease;
+  overflow: hidden;
+
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.djs-accordion-palette .djs-accordion-group[open] .djs-palette-group {
+  max-height: 200px;
+}
+
+.djs-accordion-palette .djs-entry-with-name {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  align-items: center;
+}
+
+.djs-accordion-palette .djs-entry-title {
+  white-space: nowrap;
+  word-break: break-word;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.djs-accordion-palette .entry {
+  color: var(--palette-entry-color);
+  font-size: 36px;
+  text-align: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.djs-accordion-palette .entry {
+  width: 46px;
+  height: 46px;
+  line-height: 46px;
+  cursor: default;
+}
+
+.djs-accordion-palette .entry:before {
+  vertical-align: initial;
+}
+
+.djs-accordion-palette .entry img {
+  max-width: 100%;
+}
+
+.djs-accordion-palette .entry:hover {
+  color: var(--palette-entry-hover-color);
+}
+
+.djs-accordion-palette .highlighted-entry {
+  color: var(--palette-entry-selected-color) !important;
+}
+
+.djs-accordion-palette:not(.open) .djs-accordion-palette-entries {
+  display: none;
+}
+
+.djs-accordion-palette:not(.open) {
+  overflow: hidden;
+}

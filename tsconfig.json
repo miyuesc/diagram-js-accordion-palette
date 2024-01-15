@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "outDir": "./types",
+    "skipLibCheck": true,
+    "declaration": true // 生成*.d.ts
+  }
+}
