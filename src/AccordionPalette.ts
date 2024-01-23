@@ -152,8 +152,9 @@ class AccordionPalette {
     domEvent.bind(container, 'mousedown', function(event: Event) {
       event.stopPropagation();
     });
-
-    // prevent drag propagation
+    domDelegate.bind(container, ENTRY_SELECTOR, 'click', function(event: DelegateHtmlElement) {
+      self.trigger('click', event);
+    });
     domDelegate.bind(container, ENTRY_SELECTOR, 'dragstart', function(event: DelegateHtmlElement) {
       self.trigger('dragstart', event);
     });
