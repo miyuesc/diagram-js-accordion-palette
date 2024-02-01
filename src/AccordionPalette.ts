@@ -9,7 +9,6 @@ import {
   attr as domAttr,
   clear as domClear,
   classes as domClasses,
-  matches as domMatches,
   delegate as domDelegate,
   event as domEvent
 } from 'min-dom';
@@ -44,6 +43,7 @@ type DelegateHtmlElement = HTMLElement & Event & {
 export type AccordionPaletteConfig = {
   accordion?: boolean
   showName?: boolean
+  defaultOpenGroups?: string[]
 }
 
 type PaletteEventInstance = DjsEvent & {
@@ -56,7 +56,7 @@ type PaletteState = AccordionPaletteConfig & {
 
 const ENTRY_SELECTOR = '.entry';
 
-const PALETTE_PREFIX = 'djs-accordion-palette-';
+const PALETTE_PREFIX = 'djs-accordion-palette';
 const PALETTE_SHOWN_CLS = 'shown';
 const PALETTE_OPEN_CLS = 'open';
 
@@ -159,6 +159,15 @@ class AccordionPalette {
       self.trigger('dragstart', event);
     });
 
+    domEvent.bind(container, 'mousewheel', function(event: Event) {
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+    });
+    domEvent.bind(container, 'wheel', function(event: Event) {
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+    });
+
     eventBus.fire('palette.create', {
       container: container
     });
@@ -184,6 +193,9 @@ class AccordionPalette {
     if ('accordion' in state) {
       this._config.accordion = state.accordion
     }
+    if ('defaultOpenGroups' in state) {
+      this._config.defaultOpenGroups = state.defaultOpenGroups
+    }
 
     if (this.isOpen()) {
       this.close()
@@ -204,8 +216,14 @@ class AccordionPalette {
 
     const isAccordion = !!this._config.accordion
     const showName = !!this._config.showName
+    const defaultOpenGroups = this._config.defaultOpenGroups || []
+    const defaultOpenMap = defaultOpenGroups.reduce((m, item) => (m[item] = true) && m, {})
 
     domClear(entriesContainer);
+
+    if (isAccordion && defaultOpenGroups.length) {
+      console.warn('If you use accordion mode and set multiple default expansion nodes, only the last node will be expanded.')
+    }
 
     forEach(entries, function(entry, id) {
       if(entry.separator) {
@@ -223,6 +241,9 @@ class AccordionPalette {
 
         const summaryContainer = domify(`<summary>${translate(entry.group || 'default')}</summary>`);
         detailsContainer.appendChild(summaryContainer);
+      }
+      if (defaultOpenMap[entry.group]) {
+        domAttr(detailsContainer, 'open', 'true');
       }
       // 2. 生成 details 标签的内容主体
       let groupContainer = domQuery<HTMLElement>(`[data-group=${groupName}]`, detailsContainer);
@@ -245,6 +266,9 @@ class AccordionPalette {
         entryItemEl = entryEl;
       }
       domAttr(entryEl, 'data-action', id);
+      if (!domClasses(entryEl).has('entry')) {
+        addClasses(entryEl, 'entry')
+      }
       // 4. 设置其他内容
       if (entry.title) {
         domAttr(entryItemEl, 'title', entry.title);

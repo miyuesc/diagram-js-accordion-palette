@@ -38,7 +38,7 @@
 }
 
 .djs-accordion-palette .djs-accordion-group[open] .djs-palette-group {
-  max-height: 200px;
+  max-height: max-content;
 }
 
 .djs-accordion-palette .djs-entry-with-name {
