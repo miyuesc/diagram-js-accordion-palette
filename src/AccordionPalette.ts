@@ -65,7 +65,7 @@ const DEFAULT_PRIORITY = 1000;
 class AccordionPalette {
   static $inject: string[]
   static HTML_MARKUP: string =
-    '<div class="djs-accordion-palette">' +
+    '<div class="djs-palette djs-accordion-palette">' +
     '<div class="djs-palette-entries"></div>' +
     '</div>'
 
