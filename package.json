@@ -1,7 +1,7 @@
 {
   "name": "diagram-js-accordion-palette",
-  "version": "1.3.1",
-  "description": ".",
+  "version": "1.3.2",
+  "description": "A palette that supports folding and unfolding, provided for diagram-js use. Base on diagram-js/palette.",
   "main": "dist/diagram-js-accordion-palette.cjs",
   "module": "dist/diagram-js-accordion-palette.es.js",
   "umd:main": "dist/diagram-js-accordion-palette.umd.js",

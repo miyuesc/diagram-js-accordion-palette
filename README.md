@@ -43,10 +43,13 @@ const modeler = new Modeler({
 
 This plugin module supports two custom configurations.
 
-| name             | desc       | type    | default               | required |
-|------------------|------------|---------|-----------------------|----------|
-| showName | 是否显示名称     | boolean | false                 | false    |
-| accordion      | 是否开启手风琴模式  | boolean  | false | false    |
+| name             | desc      | type     | default   | required |
+|------------------|-----------|----------|-----------|----------|
+| showName | 是否显示名称    | boolean  | false     | false    |
+| accordion      | 是否开启手风琴模式 | boolean  | false     | false    |
+| defaultOpenGroups      | 默认展开的分组   | string[] | undefined | false    |
+
+❗ 注意，`accordion` 与 `defaultOpenGroups` 互斥，且 `accordion` 优先。在需要默认展开时，请关闭手风琴模式
 
 ## Methods 方法
 
@@ -55,7 +58,7 @@ This plugin module supports two custom configurations.
 3. `close()`：Close palette / 关闭 palette
 4. `isOpen()`：Get palette's visible / 获取 palette 显示隐藏状态
 5. `isActiveTool(toolName)`：Get a tool's active status / 获取某个指定工具的激活状态
-6. `toggleState({ showName?: boolean, accordion?: boolean })`：Toggle the display style of palette elements / 更改 palette 每个元素的显示状态，名称显示或者手风琴模式
+6. `toggleState({ showName?: boolean, accordion?: boolean, defaultOpenGroups?: string[] })`：Toggle the display style of palette elements / 更改 palette 每个元素的显示状态，名称显示或者手风琴模式
 
 
 ## Preview 效果预览
